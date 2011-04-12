@@ -11,14 +11,13 @@
         <h1>domsearch.js</h1>
         <p>
           A <a href="http://jquery.com">jQuery</a> plugin for searching the DOM
-          <a class="download" href="https://github.com/juliocesar/jquery-domsearch/raw/master/jquery.domsearch.js"><span class="arrow">↓</span> Download</a>
+          <a class="download" href="https://github.com/agoodno/jquery-domsearch/raw/master/jquery.domsearch.js"><span class="arrow">↓</span> Download</a>
         </p>
       </header>
       <h1>In a gist</h1>
       <p>
         It lets you search within an element (e.g.: a table or a list), narrowing down
-        the inner elements using <a href="https://github.com/rmm5t/liquidmetal/">LiquidMetal</a>,
-        which is way better than whatever else you could come up with.
+        the inner elements using a simple test to see if the search string matches the data.
       </p>
       <h1>API</h1>
       <p>
@@ -99,9 +98,11 @@
         was done while I was working at <a href="http://incite.com.au">Incite</a>, so props
         to them.
       </p>
+      <p>
+        slight modification (simplification, really) of the match login by <a href="http://twitter.com/agoodno">@agoodno</a>.
+      </p>
     </section>
     <script type="text/javascript" src="jquery-1.5.min.js"></script>
-    <script type="text/javascript" src="liquidmetal.js"></script>
     <script type="text/javascript" src="jquery.domsearch.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {

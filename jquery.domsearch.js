@@ -14,6 +14,7 @@ $(function($) {
   }
 
   function search(query, searchIn, options) {
+	  //alert('searchIn='+searchIn.name);
     $($.grep($(searchIn).find(options.unit), function(row) {
       var text;
       switch(options.criteria.constructor) {
@@ -30,12 +31,14 @@ $(function($) {
           text = $(row).text();
           break;
       }
-      $(row).show().data('domsearch.score', LiquidMetal.score(text, query));
-      return $(row).data('domsearch.score') < options.minimumScore;
-    })
-    .sort(function(a, b) { return $(a).data('domsearch.score') < $(b).data('domsearch.score'); }))
-      .appendTo(searchIn)
-      .hide();
+      //alert('text='+text);
+      //alert('query='+query);
+      var matches = text.indexOf(query) == -1;
+      //alert('matches='+matches);
+      return matches;
+    })).appendTo(searchIn)
+       .hide();
+
   }
 
   function init(element, searchIn, options) {
@@ -58,7 +61,7 @@ $(function($) {
           }
           if (typeof opts.onkeydown == 'function') opts.onkeydown(field);
         },
-      100);
+      1000);
       return true;
     });
   }
