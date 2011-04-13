@@ -14,7 +14,7 @@ $(function($) {
   }
 
   function search(query, searchIn, options) {
-	  //alert('searchIn='+searchIn.name);
+	//console.log('searchIn='+searchIn.name);
     $($.grep($(searchIn).find(options.unit), function(row) {
       var text;
       switch(options.criteria.constructor) {
@@ -31,10 +31,13 @@ $(function($) {
           text = $(row).text();
           break;
       }
-      //alert('text='+text);
-      //alert('query='+query);
+      
+      $(row).show();
+      
+      //console.log('text='+text);
+      //console.log('query='+query);
       var matches = text.indexOf(query) == -1;
-      //alert('matches='+matches);
+      //console.log('matches='+matches);
       return matches;
     })).appendTo(searchIn)
        .hide();
@@ -54,14 +57,18 @@ $(function($) {
       var field = $(this);
       setTimeout(
         function() {
+          //should be set to progress by client, doesn't work here
+          //$("*").css("cursor", "progress");
           if (field.val() == '') {
             originalOrder.show().appendTo(target);
           } else {
+        	//console.log("searching...field=" + field.val());
             search(field.val(), target[0], opts);
           }
           if (typeof opts.onkeydown == 'function') opts.onkeydown(field);
+          $("*").css("cursor", "auto");
         },
-      1000);
+      2000);
       return true;
     });
   }
